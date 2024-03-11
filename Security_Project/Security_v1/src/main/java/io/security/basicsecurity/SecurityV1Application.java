@@ -10,6 +10,12 @@ public class SecurityV1Application {
         SpringApplication.run(SecurityV1Application.class, args);
 
 
+        /*
+        String password = "1111";
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(password);
+        System.out.println(encodedPassword);
+        */
     }
 
 }
