@@ -20,16 +20,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 // @Configuration // 설정 Class이기 때문에
-@EnableWebSecurity
+// @EnableWebSecurity
 public class SecurityConfig_0311 extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+//    @Autowired
+//    UserDetailsService userDetailsService;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -84,7 +84,7 @@ public class SecurityConfig_0311 extends WebSecurityConfigurerAdapter {
                 .rememberMe()
                 .rememberMeParameter("remember") // 기본값은 remember-me
                 .tokenValiditySeconds(3600)
-                .userDetailsService(userDetailsService)
+//                .userDetailsService(userDetailsService)
         ;
     }
 }

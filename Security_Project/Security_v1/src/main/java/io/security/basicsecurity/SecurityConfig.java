@@ -6,20 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 @Configuration // 설정 Class이기 때문에
 @EnableWebSecurity
@@ -46,6 +35,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe()
                 .userDetailsService(userDetailsService);
 
+        http
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true); // 새로운 로그인을 시도하는 사용자의 세션을 차단시킴
+                // .maxSessionsPreventsLogin(true); // 기존에 로그인 되어있는 사용자의 세션을 삭제함
 
+        // 세션 고정 보호
+        http
+                .sessionManagement()
+                // .sessionFixation().none(); // 무방비 상태
+                .sessionFixation().changeSessionId(); // 기본 값
     }
 }
