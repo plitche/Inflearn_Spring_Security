@@ -105,5 +105,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 });
 
+        http
+                .csrf(); // 기본적으로 활성화 되어있음으로, 명시하지 않아도 된다.
+//                .csrf().disable();
+
     }
 }
