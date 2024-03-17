@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,7 +29,6 @@ import java.io.IOException;
 
 @Configuration // 설정 Class이기 때문에
 @EnableWebSecurity
-@Order(0)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -39,24 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .antMatcher("/admin/**")
                 .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
-    }
-}
+                .anyRequest().authenticated();
 
-@Configuration
-@Order(1)
-class SecurityConfig2 extends WebSecurityConfigurerAdapter {
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .anyRequest().permitAll()
-                .and()
                 .formLogin();
+
+        // 위치나 특별한 장소에 관계 없이 이 구문으로 전역적으로 인증 객체를 얻어 사용 가능하다.
+        // SecurityContextHolder.getContext().getAuthentication();
     }
 }
+
