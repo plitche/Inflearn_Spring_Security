@@ -25,9 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Configuration // 설정 Class이기 때문에
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+// @Configuration // 설정 Class이기 때문에
+// @EnableWebSecurity
+public class SecurityConfig_0317 extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
