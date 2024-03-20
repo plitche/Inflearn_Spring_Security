@@ -47,6 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 위치나 특별한 장소에 관계 없이 이 구문으로 전역적으로 인증 객체를 얻어 사용 가능하다.
         // SecurityContextHolder.getContext().getAuthentication();
+
+        // SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_GLOBAL);
+        // SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
 }
 
