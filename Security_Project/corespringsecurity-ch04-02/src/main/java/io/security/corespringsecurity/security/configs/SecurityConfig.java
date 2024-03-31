@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations()); // 필터를 아에 거치지 않음.
     }
 
     @Override
@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         http
                 .authorizeRequests()
-                .antMatchers("/","/users").permitAll()
+                .antMatchers("/","/users").permitAll() // 필터를 거치나 허용함
                 .antMatchers("/mypage").hasRole("USER")
                 .antMatchers("/messages").hasRole("MANAGER")
                 .antMatchers("/config").hasRole("ADMIN")
