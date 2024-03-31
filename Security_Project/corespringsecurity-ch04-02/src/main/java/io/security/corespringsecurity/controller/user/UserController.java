@@ -38,7 +38,6 @@ public class UserController {
 		account.setPassword(passwordEncoder.encode(account.getPassword()));
 		userService.createUser(account);
 
-
 		return "redirect:/";
 	}
 }

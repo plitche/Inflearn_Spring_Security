@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+@Entity // JPA에서 관리하는 Class가 되고, DB와 연결이 된다.
 @Data
 public class Account {
 
