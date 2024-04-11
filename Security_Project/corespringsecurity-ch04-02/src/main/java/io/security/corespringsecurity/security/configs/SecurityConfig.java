@@ -95,10 +95,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/users", "user/login/**", "/login*").permitAll() // 필터를 거치나 허용함
+                // .antMatchers("/", "/users", "user/login/**", "/login*").permitAll() // 필터를 거치나 허용함
                 .antMatchers("/mypage").hasRole("USER")
                 .antMatchers("/messages").hasRole("MANAGER")
                 .antMatchers("/config").hasRole("ADMIN")
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
 
         .and()

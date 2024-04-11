@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/common/head :: adminHead"></head>
+<body>
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+
+</script>
+<div th:replace="admin/common/top::header"></div>
+<div id="maininner"><!-- maininner (s)-->
+    <div className="cc-tab-con">
+        <a href="javascript:tabChange('1');" className="cc-tab-item">사용자관리</a>
+        <!--// on : 현재 위치 //-->
+        <a href="javascript:tabChange('2');" className="cc-tab-item">권한관리</a>
+        <a href="javascript:tabChange('3');" className="cc-tab-item">리소스관리</a>
+    </div>
+    <div className="tbl_wrp">
+        <div style="padding-top:50px;" className="col">
+            <div className="container text-center">
+                <div className="security"></div>
+                <h1 className="text-primary">Spring Security Administration</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
