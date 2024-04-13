@@ -2,6 +2,7 @@ package io.security.corespringsecurity.security.listener;
 
 import io.security.corespringsecurity.domain.entity.*;
 import io.security.corespringsecurity.repository.*;
+import io.security.corespringsecurity.security.configs.RoleHierarchyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
